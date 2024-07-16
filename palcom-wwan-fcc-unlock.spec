@@ -7,7 +7,7 @@
 
 Name:		palcom-wwan-fcc-unlock
 Version:	3.1.1
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	FCC unlocking service for Palcom modems
 
 License:	BSD-3-Clause
@@ -20,8 +20,9 @@ BuildRequires: cmake gcc g++ glib2-devel
 BuildRequires: openssl-libs libmbim-devel
 %endif
 BuildRequires: chrpath
+BuildRequires: selinux-policy
 Requires: ModemManager dmidecode usbutils openssl
-Requires: policycoreutils
+Requires: selinux-policy
 
 %description
 FCC unlocking service for Palcom modems to be used by ModemManager.
@@ -51,16 +52,16 @@ cp build/release/dpkg/opt/pwl/pwl-unlock/fcc-unlock.d/* %{buildroot}%{_libdir}/M
 sed -i 's@/opt/pwl/pwl-unlock/pwl_unlock@pwl_unlock@g' %{buildroot}%{_libdir}/ModemManager/fcc-unlock.d/*
 chmod a+x %{buildroot}%{_libdir}/ModemManager/fcc-unlock.d/*
 mkdir -p %{buildroot}%{_datadir}/selinux/packages
-cp deb_extra/modemmanager_fccunlock.cil %{buildroot}%{_datadir}/selinux/packages
+cp deb_extra/modemmanager_fccunlock.cil %{buildroot}%{_datadir}/selinux/packages/modemmanager_palcom_fccunlock.cil
 
 
 %post
-%selinux_modules_install %{_datadir}/selinux/packages/modemmanager_fccunlock.cil
+%selinux_modules_install %{_datadir}/selinux/packages/modemmanager_palcom_fccunlock.cil
 
 
 %postun
 if [ $1 -eq 0 ]; then
-	%selinux_modules_uninstall modemmanager_fccunlock
+	%selinux_modules_uninstall modemmanager_palcom_fccunlock
 fi
 
 
@@ -70,9 +71,13 @@ fi
 %{_libdir}/ModemManager/fcc-unlock.d/413c:8217
 %{_libdir}/ModemManager/fcc-unlock.d/413c:8218
 %{_libdir}/ModemManager/fcc-unlock.d/413c:8219
-%{_datadir}/selinux/packages/modemmanager_fccunlock.cil
+%{_datadir}/selinux/packages/modemmanager_palcom_fccunlock.cil
 
 
 %changelog
+%changelog
+* Tue Jul 16 2024 Jose Ignacio Tornos Martinez <jtornosm@redhat.com> - 3.1.1-2
+- Fix selinux issue with mock
+
 * Fri Jun 14 2024 Jose Ignacio Tornos Martinez <jtornosm@redhat.com> - 3.1.1-1
 - Initial version of the package
