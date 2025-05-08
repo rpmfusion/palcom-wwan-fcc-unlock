@@ -6,8 +6,8 @@
 %global debug_package %{nil}
 
 Name:		palcom-wwan-fcc-unlock
-Version:	3.1.1
-Release:	4%{?dist}
+Version:	4.3.5
+Release:	1%{?dist}
 Summary:	FCC unlocking service for Palcom modems
 
 License:	BSD-3-Clause
@@ -71,10 +71,14 @@ fi
 %{_libdir}/ModemManager/fcc-unlock.d/413c:8217
 %{_libdir}/ModemManager/fcc-unlock.d/413c:8218
 %{_libdir}/ModemManager/fcc-unlock.d/413c:8219
+%{_libdir}/ModemManager/fcc-unlock.d/14c0:4d75
 %{_datadir}/selinux/packages/modemmanager_palcom_fccunlock.cil
 
 
 %changelog
+* Mon May 5 2025 Jose Ignacio Tornos Martinez <jtornosm@redhat.com> - 4.3.5-1
+- Update to 4.3.5
+
 * Wed Jan 29 2025 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 3.1.1-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_42_Mass_Rebuild
 
