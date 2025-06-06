@@ -6,7 +6,7 @@
 %global debug_package %{nil}
 
 Name:		palcom-wwan-fcc-unlock
-Version:	4.3.5
+Version:	4.4.2
 Release:	1%{?dist}
 Summary:	FCC unlocking service for Palcom modems
 
@@ -76,6 +76,9 @@ fi
 
 
 %changelog
+* Fri Jun 6 2025 Jose Ignacio Tornos Martinez <jtornosm@redhat.com> - 4.4.2-1
+- Update to 4.4.2
+
 * Mon May 5 2025 Jose Ignacio Tornos Martinez <jtornosm@redhat.com> - 4.3.5-1
 - Update to 4.3.5
 
