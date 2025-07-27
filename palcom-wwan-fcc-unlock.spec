@@ -7,7 +7,7 @@
 
 Name:		palcom-wwan-fcc-unlock
 Version:	4.4.3
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	FCC unlocking service for Palcom modems
 
 License:	BSD-3-Clause
@@ -76,6 +76,9 @@ fi
 
 
 %changelog
+* Sun Jul 27 2025 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 4.4.3-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
 * Fri Jul 4 2025 Jose Ignacio Tornos Martinez <jtornosm@redhat.com> - 4.4.3-1
 - Update to 4.4.3
 
